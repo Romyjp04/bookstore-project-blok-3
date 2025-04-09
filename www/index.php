@@ -15,7 +15,7 @@ if ($result->num_rows > 0) {
     // Haalt alle resultaten op als een associatieve array
     $genres = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-//checked of genre gezet is
+//checkt of genre gezet is
 if (isset($_GET["genre"])){
     $genre = $_GET["genre"];
     $stmt = $mysqli->prepare("SELECT * FROM boeken WHERE genre = ?");
@@ -29,12 +29,7 @@ if (isset($_GET["genre"])){
     }
 
     $stmt->close();
-   
-
-   
 }
-
-
 else{
 
     // Query
@@ -49,8 +44,6 @@ else{
     $mysqli->close();   
 
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -67,12 +60,12 @@ else{
 </head>
 <body>
 
-    
 <!-- navbar -->
+ 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
     <div class="container-fluid">
         <div class="justify-content-md-center">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ">
                 <li class="nav-item">
                     <a class="nav-link active " href="/">Bookstore</a>
                 </li>
@@ -81,23 +74,24 @@ else{
     </div>
 </nav>
 
-<div class="image" >
-    <img src="images/boekfoto.jpg">
-</div>
-
+<!-- <div class="image" >
+<img src="images/boekfoto.jpg">
+</div> -->
 
 <div class="container mt-5">
     <!-- filter dynamisch uit database -->
     <div class="row">
         <div class="col-2">
             <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 border-0 shadow w-220px" data-bs-theme="dark">
-                <li><a class="dropdown-item rounded-2" href="index.php" >alles</a></li>
+                <li><p class="dropdown-item rounded-2 disabled">resultaten: <?php echo count($boeken); ?></p></li>
+                <li><a class="dropdown-item rounded-2" href="index.php" >Alles</a></li>
                 <?php foreach($genres as $genre ){ ?>
                 <li><a class="dropdown-item rounded-2" href="index.php?genre=<?php echo $genre['genre']?>" ><?php echo $genre['genre']?></a></li>
             
                 <?php } ?>
             </ul>
         </div>
+      
         <div class="col-9 " >
             <div class="row">
                 <?php foreach ($boeken as $boek) { ?>
@@ -118,9 +112,6 @@ else{
                         </div>
                     </div>
                 <?php } ?>
-        
-                
-
             </div>
         </div>
     </div>
