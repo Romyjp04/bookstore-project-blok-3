@@ -73,6 +73,7 @@ mysqli_close($conn);
 
 
 <div class="filter">
+        <p class="filter-btn">resultaten: <?php echo count($boeken); ?></p>
         <a href="index.php" class="filter-btn">Alle genres</a>
         <a href="?genre=fantasy" class="filter-btn">fantasy </a>
         <a href="?genre=jeugd" class="filter-btn">jeugd</a>
