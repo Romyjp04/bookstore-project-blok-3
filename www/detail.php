@@ -23,8 +23,6 @@ if (mysqli_num_rows($result) > 0) {
     mysqli_close($conn);
 
 
-var_dump($boek);
-
 
 
 
@@ -42,10 +40,18 @@ var_dump($boek);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     
+
+ 
+<nav class="navbar">
+<ul>
+  <li><a class = "test" href= "index.php">Bookstore</a></li>
+</ul>
+</nav>
 
 
 
@@ -83,7 +89,7 @@ var_dump($boek);
                     <td><?php echo $boek['uitgeverij']; ?></td>
                     <td><?php echo $boek['publicatiejaar']; ?></td>
                     <td><?php echo $boek['prijs']; ?></td>
-                    <td><?php echo $boek['thumbnail_url']; ?></td>
+                    <td><img src="images/<?php echo $boek['thumbnail_url']; ?>"></td>
                 </tr>
         </tbody>
     </table>
