@@ -6,19 +6,17 @@ require "database_connection.php";
 $id = $_GET['id'];
 
 
-$sql = "SELECT * FROM boeken WHERE id = '$id' ";
-    $result = mysqli_query($conn, $sql);
+$sql = "SELECT * FROM boeken WHERE id = '$id'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // Haal het boek op als een associatieve array
     $boek = mysqli_fetch_assoc($result);
 
-    $boek = array();
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $boek[] = $row;
-        }
-    } 
-    else {
-        echo "Geen resultaten gevonden.";
-    } 
+    // Voeg hier meer velden toe die je wilt weergeven
+} else {
+    echo "Geen resultaten gevonden.";
+}
 
 
 
@@ -74,7 +72,6 @@ var_dump($boek);
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($boeken as $boek): ?>
                 <tr>
                     <td><?php echo $boek['id']; ?></td>
                     <td><?php echo $boek['titel']; ?></td>
@@ -88,7 +85,6 @@ var_dump($boek);
                     <td><?php echo $boek['prijs']; ?></td>
                     <td><?php echo $boek['thumbnail_url']; ?></td>
                 </tr>
-            <?php endforeach; ?>
         </tbody>
     </table>
 </div>
