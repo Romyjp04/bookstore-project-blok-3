@@ -3,12 +3,12 @@
 require "database_connection.php";
 
 
-// Controleer de verbinding
+// Controleerd de verbinding
 if (!$conn) {
     die("Verbinding mislukt: " . mysqli_connect_error());
 }
 
-// Stap 2: Voer een SQL-query uit
+
 
 
 

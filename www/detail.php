@@ -10,10 +10,9 @@ $sql = "SELECT * FROM boeken WHERE id = '$id'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    // Haal het boek op als een associatieve array
+
     $boek = mysqli_fetch_assoc($result);
 
-    // Voeg hier meer velden toe die je wilt weergeven
 } else {
     echo "Geen resultaten gevonden.";
 }
